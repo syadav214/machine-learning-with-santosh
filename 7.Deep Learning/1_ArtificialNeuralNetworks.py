@@ -56,6 +56,7 @@ from keras.layers import Dense
 classifier = Sequential()
 
 # Adding the input layer and the first hidden layer
+# (input + output )/2 ; (11+1)/2=6
 classifier.add(Dense(output_dim = 6, init = 'uniform', activation = 'relu', input_dim = 11))
 
 # Adding the second hidden layer
