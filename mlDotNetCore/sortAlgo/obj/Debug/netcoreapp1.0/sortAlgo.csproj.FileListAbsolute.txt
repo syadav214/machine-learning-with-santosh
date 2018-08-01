@@ -1,0 +1,5 @@
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\sortAlgo\bin\Debug\netcoreapp1.0\sortAlgo.dll
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\sortAlgo\bin\Debug\netcoreapp1.0\sortAlgo.pdb
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\sortAlgo\obj\Debug\netcoreapp1.0\sortAlgo.AssemblyInfo.cs
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\sortAlgo\obj\Debug\netcoreapp1.0\sortAlgo.dll
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\sortAlgo\obj\Debug\netcoreapp1.0\sortAlgo.pdb

@@ -1,0 +1,5 @@
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\forecastEngineConsole\bin\Debug\netcoreapp1.0\forecastEngineConsole.dll
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\forecastEngineConsole\bin\Debug\netcoreapp1.0\forecastEngineConsole.pdb
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\forecastEngineConsole\obj\Debug\netcoreapp1.0\forecastEngineConsole.AssemblyInfo.cs
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\forecastEngineConsole\obj\Debug\netcoreapp1.0\forecastEngineConsole.dll
+D:\Testing\ASP.NETCoreProj\mlDotNetCore\forecastEngineConsole\obj\Debug\netcoreapp1.0\forecastEngineConsole.pdb
