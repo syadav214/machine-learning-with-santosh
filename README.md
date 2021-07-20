@@ -1,8 +1,4 @@
-# skMachineLearning
-
-Programs in Python, R and few in Java/C# to practice ML Algorithms
-
-Trying out ML
+Practice ML Algorithms
 
 Prerequisites on Windows:
 
