@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def test_run():
     start_date = '2020-12-01'
@@ -14,8 +15,13 @@ def test_run():
     #drop na values
     df = df.dropna()
     
-    print(df.mean())
-
+    #normalize the dataframe using first row
+    df = df/df.iloc[0,:]
+    
+    ax = df.plot(title="stock", fontsize=12)
+    ax.set_xlabel("date")
+    ax.set_ylabel("price")
+    plt.show()
     
 if __name__ == "__main__":
     test_run()
