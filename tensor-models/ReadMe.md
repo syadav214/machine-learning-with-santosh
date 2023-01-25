@@ -30,6 +30,6 @@ then it means:
 Note: AVX stands for Advanced Vector Extensions.`
 
 pip3 install -U scikit-learn
-
+pip3 install -U matplotlib
 
 
