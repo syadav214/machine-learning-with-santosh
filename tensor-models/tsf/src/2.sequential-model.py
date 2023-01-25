@@ -13,6 +13,7 @@ import itertools
 import matplotlib.pyplot as plt
 import tensorflowjs as tfjs
 
+#training
 train_labels = []
 train_samples = []
 
@@ -42,7 +43,7 @@ train_labels, train_samples = shuffle(train_labels, train_samples)
 
 #rescaling data between 0 to 1
 scaler = MinMaxScaler(feature_range=(0,1))
-scaled_train_samples = scaler.fit_transform(train_samples.reshape(-1,1))\
+scaled_train_samples = scaler.fit_transform(train_samples.reshape(-1,1))
 
 #incase we are running on GPU
 #physical_devices = tf.config.experimental.list_physical_devices("GPU")
@@ -63,15 +64,51 @@ model.compile(optimizer=Adam(learning_rate=0.0001), loss='sparse_categorical_cro
 
 model.fit(x=scaled_train_samples, y=train_labels, validation_split=0.1, batch_size=10, epochs=30, shuffle=True, verbose=0)
 
-predications = model.predict(x=scaled_train_samples, batch_size=10, verbose=0)
+# testing
+test_labels =  []
+test_samples = []
 
-rounded_predications = np.argmax(predications, axis=-1)
+for i in range(10):
+    # The 5% of younger individuals who did experience side effects
+    random_younger = randint(13,64)
+    test_samples.append(random_younger)
+    test_labels.append(1)
 
-"""for i in range(len(scaled_train_samples)):
-    print(train_samples[i], " ====> ",rounded_predications[i])
-"""
+    # The 5% of older individuals who did not experience side effects
+    random_older = randint(65,100)
+    test_samples.append(random_older)
+    test_labels.append(0)
 
-cm = confusion_matrix(y_true= train_labels, y_pred= rounded_predications)
+for i in range(200):
+    # The 95% of younger individuals who did not experience side effects
+    random_younger = randint(13,64)
+    test_samples.append(random_younger)
+    test_labels.append(0)
+
+    # The 95% of older individuals who did experience side effects
+    random_older = randint(65,100)
+    test_samples.append(random_older)
+    test_labels.append(1)
+
+test_labels = np.array(test_labels)
+test_samples = np.array(test_samples)
+test_labels, test_samples = shuffle(test_labels, test_samples)
+
+scaled_test_samples = scaler.fit_transform(test_samples.reshape(-1,1))
+
+predictions = model.predict(
+      x=scaled_test_samples
+    , batch_size=10
+    , verbose=0
+)
+
+rounded_predications = np.argmax(predictions, axis=-1)
+
+def printPredication():
+    for i in range(len(test_samples)):
+        print(test_samples[i], " ====> ",rounded_predications[i])
+
+#printPredication()
 
 def plot_confusion_matrix(cm, classes,
                         normalize=False,
@@ -105,15 +142,17 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    #plt.show()
+    plt.show()
 
+"""
+cm = confusion_matrix(y_true=test_labels, y_pred=rounded_predications)
 cm_plot_labels = ['no_side_effects','had_side_effects']
 plot_confusion_matrix(cm=cm, classes=cm_plot_labels, title='Confusion Matrix')
-
+"""
 #model.save('saved_models/seq.h5')
 
 #convert to tensorflow js
-tfjs.converters.save_keras_model(model, 'saved_models')
+#tfjs.converters.save_keras_model(model, 'saved_models')
 
 
 
