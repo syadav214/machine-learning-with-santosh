@@ -31,5 +31,10 @@ Note: AVX stands for Advanced Vector Extensions.`
 
 pip3 install -U scikit-learn
 pip3 install -U matplotlib
+pip3 install -U tensorflowjs
+
+
+RUN
+curl http://localhost:7000/23,90     
 
 

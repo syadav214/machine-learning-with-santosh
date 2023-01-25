@@ -2,3 +2,4 @@ wheel/
 lib/
 bin/
 saved_models/
+js_converted_models/

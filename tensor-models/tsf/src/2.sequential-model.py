@@ -11,6 +11,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import confusion_matrix
 import itertools
 import matplotlib.pyplot as plt
+import tensorflowjs as tfjs
 
 train_labels = []
 train_samples = []
@@ -110,5 +111,9 @@ cm_plot_labels = ['no_side_effects','had_side_effects']
 plot_confusion_matrix(cm=cm, classes=cm_plot_labels, title='Confusion Matrix')
 
 #model.save('saved_models/seq.h5')
+
+#convert to tensorflow js
+tfjs.converters.save_keras_model(model, 'saved_models')
+
 
 

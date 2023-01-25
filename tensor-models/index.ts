@@ -1,17 +1,22 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import * as tf from '@tensorflow/tfjs-node';
+import { LayersModel } from '@tensorflow/tfjs-node';
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
+let model: LayersModel;
 
-const t = tf.tensor([[1, 2, 3], [1, 2, 3]]);
+(async ()=>{
+  model = await tf.loadLayersModel(tf.io.fileSystem("./load-model/model.json"));
+})();
 
-app.get('/', (req: Request, res: Response) => {
-    tf.ones([4,4]).print();
-
-  res.send('Express + TypeScript Server');
+app.get('/:age', async (req: Request, res: Response) => {
+  const { age } = req.params;
+  const tensor = tf.tensor(age.split(",").map(n => parseInt(n)));
+  const predictions = await model.predict(tensor);
+  res.send(predictions);
 });
 
 app.listen(port, () => {
